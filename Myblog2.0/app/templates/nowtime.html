@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Now Time{% endblock %}
+{% block page_content %}
+    <div class="page-header">
+        <h1>当地时间{{ moment(current_time).format('LLL') }}.</h1>
+        <h1>刚才开始已经过去{{ moment(current_time).fromNow(refresh=True) }}</h1>
+    </div>
+{% endblock %}
