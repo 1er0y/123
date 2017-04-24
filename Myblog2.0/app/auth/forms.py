@@ -4,7 +4,7 @@ from wtforms import StringField,PasswordField,SubmitField,BooleanField
 from wtforms.validators import Required,Length
 
 class LoginForm(Form):
-    name = StringField(label=u'报上名来',validators=[Required(),                                         Length(1,64)])
+    name = StringField(label=u'用户名',validators=[Required(),                                         Length(1,64)])
     password = PasswordField(label=u'密码',validators=[Required()])
     remember_me = BooleanField(u'记住我')
     submit = SubmitField(label=u'登录')

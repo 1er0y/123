@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block title%}留言本{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+         <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.body(only_input=True,rows=4,class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary pull-right")}}
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        {% for board in boards|sort(attribute="creater",reverse=True) %}
+        <div class="media">
+            <hr>
+            <span>留言日期:{{ moment(board.creater).format('LLL') }}</span>
+                <div class="media-body">
+                    <p>{{ board.body }}</p>
+                </div>
+        </div>
+        {% endfor %}
+        <div class="text-center">
+            <div class="center-block">
+                {% if pagination %}
+                    {{ render_pagination(pagination) }}
+                {% endif %}
+             </div>
+        </div>
+    </div>
+
+{% endblock %}

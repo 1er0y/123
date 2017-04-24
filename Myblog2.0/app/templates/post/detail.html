@@ -3,33 +3,34 @@
 
 {% block page_content %}
     <div class="container">
-         <span>作者:{{ post.author.name }}</span> <span>发表日期:{{ post.timestamp }}</span>
+        <span>发表日期:{{ moment(post.timestamp).format('LLL') }}</span>
         <hr>
 
         {# 正文 #}
         <div>
-            {{ post.body.html|safe }}
+            {{ post.body_html|safe }}
         </div>
 
         {# 操作链接 #}
         <h3>评论</h3>
         {# 发表评论 #}
         <div>
-            {{ wtf.quickform(form) }}
+            {{ wtf.quick_form(form) }}
         </div>
 
         {# 评论列表 #}
-
+        {% for comment in post.comments|sort(attribute="created",reverse=True) %}
         <div class="media">
 {#            <div class="media-left">#}
 {#                <a href="#">#}
 {#                    <img class="media-object" src="">#}
 {#                </a>#}
 {#            </div>#}
-            <div class="media-body">
-                {{ comment.body|safe }}
-                ...
-            </div>
+                <span>评论日期:{{ moment(comment.created).fromNow(refresh=True) }}</span>
+                <div class="media-body">
+                {{ comment.body }}
+                </div>
         </div>
+        {% endfor %}
     </div>
 {% endblock %}

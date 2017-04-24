@@ -13,3 +13,7 @@ class PostForm(Form):
 class CommentForm(Form):
     body = PageDownField(label=u'评论',validators=[DataRequired()])
     submit = SubmitField(u'发表')
+
+class BoardForm(Form):
+    body = PageDownField(label=u'内容',validators=[DataRequired()])
+    submit = SubmitField(u'发表')

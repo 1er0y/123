@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from "bootstrap/pagination.html" import render_pagination %}
+{% block title %}博客{% endblock %}
+
+{% block page_content %}
+    <div class="center-block">
+    {% for post in posts %}
+        <div class="text-center">
+        <h2><a href="{{ url_for('main.posts',id = post.id) }}">{{ post.title }}</a></h2>
+        </div>
+        <div>
+        {{ post.body_html|safe }}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="text-center">
+        <div class="center-block">
+            {% if pagination %}
+                {{ render_pagination(pagination) }}
+            {% endif %}
+         </div>
+    </div>
+
+{% endblock %}
+

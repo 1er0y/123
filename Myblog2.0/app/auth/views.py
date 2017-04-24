@@ -32,6 +32,7 @@ def logout():
 
 
 @auth.route('/register',methods=['GET','POST'])
+@login_required
 def register():
     title = u'注册'
     form = RegisterForm()
@@ -42,8 +43,13 @@ def register():
             user = User(username = u'{}'.format(form.username.data),
                         password = form.password.data)
             db.session.add(user)
+            db.session.commit()
         #form.username.name = ''
         return redirect(url_for('auth.login'))
     return render_template('register.html',form=form,title=title)
+
+
+
+
 
 

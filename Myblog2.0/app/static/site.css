@@ -1,8 +1,5 @@
-body {
-    color: #000;
-}
 
-a {
-    font-size:2em;
+
+a,a.visited{
     color: #000;
 }

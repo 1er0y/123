@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block scripts %}
+    <script src="https://use.fontawesome.com/60b2e7c51c.js"></script>
+{% endblock %}
+{% block title %}关于我{% endblock %}
+{% block page_content %}
+    <div><div class="container">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;我是Leroy（冯凯东），是东南大学成贤学院电子与计算机工程学院的一名大三在校生，
+            将近三年的学习，使我学到了许多东西，当然 并不是多少与本专业有关的知识。利用大三的空余时间，我自学了Python这门语言，
+            原来是想制作一个关于我们五个高中同学的网站，但是出去找实习工作的原因，我 选择了先制作这个个人博客，网站很简单，
+            功能也并不是很完善，但至少能初步运行起来。后续我会陆续增加一些新的功能和机制</p>
+
+       <p>&nbsp;&nbsp;&nbsp;&nbsp;关于这个网站，还有一个要感谢的人，他是我的同班同学、老乡navian，很多次遇到bug都是他教我如何调试
+           如何排错，以至于我没有半途而废，<a href="http://118.89.26.239:8888">奈凡的网站</a>这个是他的个人网站。
+        </p>
+    </div>
+        <div class="text-center">
+            <img src="static/aboutme.JPG" class="img-responsive center-block" alt="Cinque Terre" width="300">
+        </div>
+    </div>
+    <div class="text-center">
+        <br>
+        <a href="{{ url_for('main.wechat') }}"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
+        <a href="https://github.com/1er0y/study"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100013150865537"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+    </div>
+{% endblock %}

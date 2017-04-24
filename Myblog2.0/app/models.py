@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(64),unique=True,index=True)
-    password = db.Column(db.String(64),unique=True)
+    password = db.Column(db.String(64))
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'),default=3)
 
     posts = db.relationship('Post',backref ='author')
@@ -58,3 +58,9 @@ class Comment(db.Model):
     body = db.Column(db.String)
     created = db.Column(db.DateTime,index=True,default=datetime.utcnow())
     post_id = db.Column(db.Integer,db.ForeignKey('posts.id'))
+
+class Board(db.Model):
+    __tablename__= 'boards'
+    id = db.Column(db.Integer,primary_key=True)
+    body = db.Column(db.String)
+    creater = db.Column(db.DateTime,index=True,default=datetime.utcnow())
